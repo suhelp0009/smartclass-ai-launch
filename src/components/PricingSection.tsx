@@ -117,7 +117,7 @@ const PricingSection = () => {
 
               {/* CTA */}
               <Button
-                variant={plan.popular ? "hero" : "outline"}
+                variant={plan.popular ? "hero" : plan.name === "Enterprise" ? "premium" : "success"}
                 size="lg"
                 className="w-full"
               >

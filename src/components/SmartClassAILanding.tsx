@@ -1,6 +1,7 @@
 import Navigation from "./Navigation";
 import HeroSection from "./HeroSection";
 import WhySmartClassAI from "./WhySmartClassAI";
+import AIFeatures from "./AIFeatures";
 import DashboardHighlights from "./DashboardHighlights";
 import PricingSection from "./PricingSection";
 import CallToAction from "./CallToAction";
@@ -12,6 +13,7 @@ const SmartClassAILanding = () => {
       <Navigation />
       <HeroSection />
       <WhySmartClassAI />
+      <AIFeatures />
       <DashboardHighlights />
       <PricingSection />
       <CallToAction />

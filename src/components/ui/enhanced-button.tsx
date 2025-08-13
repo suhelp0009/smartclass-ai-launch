@@ -22,6 +22,8 @@ const buttonVariants = cva(
         "hero-outline": "border-2 border-white text-white hover:bg-white hover:text-primary shadow-medium font-semibold transform hover:scale-105 transition-bounce",
         accent: "bg-gradient-accent text-white hover:opacity-90 shadow-accent font-medium",
         "accent-outline": "border-2 border-accent text-accent hover:bg-accent hover:text-white shadow-soft font-medium",
+        success: "bg-gradient-success text-white hover:opacity-90 shadow-medium font-medium",
+        premium: "bg-gradient-primary-soft text-primary border border-primary/20 hover:bg-primary hover:text-white shadow-soft font-medium transform hover:scale-105 transition-bounce",
         glow: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-large animate-glow",
       },
       size: {

@@ -16,10 +16,10 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222 84% 5%;
 
-    /* Primary: Indigo/Blue (#3B82F6) */
-    --primary: 217 91% 60%;
+    /* Primary: Enhanced Purple-Blue Gradient */
+    --primary: 255 84% 60%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 217 91% 70%;
+    --primary-glow: 255 84% 70%;
 
     /* Secondary: Light neutrals */
     --secondary: 216 33% 97%;
@@ -28,10 +28,10 @@
     --muted: 216 20% 95%;
     --muted-foreground: 215 16% 47%;
 
-    /* Accent: Teal (#14B8A6) */
-    --accent: 174 84% 40%;
+    /* Accent: Enhanced Cyan-Teal */
+    --accent: 190 95% 45%;
     --accent-foreground: 0 0% 100%;
-    --accent-glow: 174 84% 50%;
+    --accent-glow: 190 95% 55%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
@@ -44,6 +44,8 @@
     --gradient-hero: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
     --gradient-card: linear-gradient(145deg, hsl(var(--card)), hsl(var(--muted)));
     --gradient-accent: linear-gradient(90deg, hsl(var(--accent)), hsl(var(--accent-glow)));
+    --gradient-primary-soft: linear-gradient(120deg, hsl(var(--primary) / 0.1), hsl(var(--accent) / 0.1));
+    --gradient-success: linear-gradient(90deg, hsl(142 76% 36%), hsl(142 76% 46%));
 
     /* Shadows */
     --shadow-soft: 0 4px 6px -1px hsl(var(--primary) / 0.1), 0 2px 4px -1px hsl(var(--primary) / 0.06);
@@ -172,6 +174,14 @@
 
   .bg-gradient-accent {
     background: var(--gradient-accent);
+  }
+
+  .bg-gradient-primary-soft {
+    background: var(--gradient-primary-soft);
+  }
+
+  .bg-gradient-success {
+    background: var(--gradient-success);
   }
 
   /* Custom shadows */
