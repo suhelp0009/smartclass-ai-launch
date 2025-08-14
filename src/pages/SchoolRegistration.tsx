@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
+import { ArrowLeft } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 
@@ -104,8 +105,18 @@ const SchoolRegistration = () => {
     <div className="min-h-screen bg-gradient-to-br from-background to-muted/20 flex items-center justify-center p-4">
       <Card className="w-full max-w-2xl shadow-large bg-card/95 backdrop-blur-sm">
         <CardHeader className="text-center space-y-4">
-          <div className="text-sm text-muted-foreground">
-            Have an account? <button onClick={() => navigate('/school-search')} className="text-primary hover:underline">Sign In</button>
+          <div className="flex items-center justify-between">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => navigate('/')}
+              className="p-2 hover:bg-accent/50"
+            >
+              <ArrowLeft className="h-4 w-4" />
+            </Button>
+            <div className="text-sm text-muted-foreground">
+              Have an account? <button onClick={() => navigate('/school-search')} className="text-primary hover:underline">Sign In</button>
+            </div>
           </div>
           <CardTitle className="text-3xl font-bold">Create Your Account</CardTitle>
           <p className="text-primary text-lg">
