@@ -16,10 +16,10 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222 84% 5%;
 
-    /* Primary: Enhanced Purple-Blue Gradient */
-    --primary: 255 84% 60%;
+    /* Primary: Enhanced Blue with better contrast */
+    --primary: 217 91% 60%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 255 84% 70%;
+    --primary-glow: 217 91% 70%;
 
     /* Secondary: Light neutrals */
     --secondary: 216 33% 97%;
