@@ -15,7 +15,6 @@ interface School {
   id: string;
   name: string;
   subdomain: string;
-  admin_email: string;
 }
 
 const SchoolSearch = () => {
@@ -40,9 +39,10 @@ const SchoolSearch = () => {
 
   const fetchSchools = async () => {
     try {
+      // Only select basic school information (not sensitive data like admin_email, contact_number)
       const { data, error } = await supabase
         .from('schools')
-        .select('id, name, subdomain, admin_email')
+        .select('id, name, subdomain')
         .eq('is_active', true)
         .order('name');
 
@@ -239,11 +239,11 @@ const SchoolSearch = () => {
                                     selectedSchool?.id === school.id ? "opacity-100" : "opacity-0"
                                   )}
                                 />
-                                <div className="flex-1">
-                                  <div className="font-medium text-foreground">{school.name}</div>
-                                  <div className="text-sm text-muted-foreground">
-                                    {school.subdomain}.smartclassai.com
-                                  </div>
+                                 <div className="flex-1">
+                                   <div className="font-medium text-foreground">{school.name}</div>
+                                   <div className="text-sm text-muted-foreground">
+                                     {school.subdomain}.smartclassai.com
+                                   </div>
                                 </div>
                               </CommandItem>
                             ))}
