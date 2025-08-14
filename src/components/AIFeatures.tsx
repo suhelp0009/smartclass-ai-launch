@@ -44,7 +44,7 @@ const AIFeatures = () => {
           </div>
           <h2 className="text-4xl sm:text-5xl font-bold mb-6">
             Transform Education with{" "}
-            <span className="bg-gradient-hero bg-clip-text text-slate-950">TSmart echnology</span>
+            <span className="bg-gradient-hero bg-clip-text text-slate-950">Smart Technology</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Experience the future of school management with our AI-driven platform that automates routine tasks, 
