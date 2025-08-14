@@ -1,48 +1,83 @@
 import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
-
 const Footer = () => {
   const footerLinks = {
-    Product: [
-      { label: "Features", href: "#features" },
-      { label: "Dashboards", href: "#dashboards" },
-      { label: "Pricing", href: "#pricing" },
-      { label: "Integrations", href: "#integrations" },
-    ],
-    Company: [
-      { label: "About Us", href: "#about" },
-      { label: "Contact", href: "#contact" },
-      { label: "Blog", href: "#blog" },
-      { label: "Careers", href: "#careers" },
-    ],
-    Support: [
-      { label: "Help Center", href: "#help" },
-      { label: "Documentation", href: "#docs" },
-      { label: "API Reference", href: "#api" },
-      { label: "Status", href: "#status" },
-    ],
-    Legal: [
-      { label: "Privacy Policy", href: "#privacy" },
-      { label: "Terms of Service", href: "#terms" },
-      { label: "Cookie Policy", href: "#cookies" },
-      { label: "GDPR", href: "#gdpr" },
-    ],
+    Product: [{
+      label: "Features",
+      href: "#features"
+    }, {
+      label: "Dashboards",
+      href: "#dashboards"
+    }, {
+      label: "Pricing",
+      href: "#pricing"
+    }, {
+      label: "Integrations",
+      href: "#integrations"
+    }],
+    Company: [{
+      label: "About Us",
+      href: "#about"
+    }, {
+      label: "Contact",
+      href: "#contact"
+    }, {
+      label: "Blog",
+      href: "#blog"
+    }, {
+      label: "Careers",
+      href: "#careers"
+    }],
+    Support: [{
+      label: "Help Center",
+      href: "#help"
+    }, {
+      label: "Documentation",
+      href: "#docs"
+    }, {
+      label: "API Reference",
+      href: "#api"
+    }, {
+      label: "Status",
+      href: "#status"
+    }],
+    Legal: [{
+      label: "Privacy Policy",
+      href: "#privacy"
+    }, {
+      label: "Terms of Service",
+      href: "#terms"
+    }, {
+      label: "Cookie Policy",
+      href: "#cookies"
+    }, {
+      label: "GDPR",
+      href: "#gdpr"
+    }]
   };
-
-  const socialLinks = [
-    { icon: Facebook, href: "#facebook", label: "Facebook" },
-    { icon: Twitter, href: "#twitter", label: "Twitter" },
-    { icon: Linkedin, href: "#linkedin", label: "LinkedIn" },
-    { icon: Instagram, href: "#instagram", label: "Instagram" },
-  ];
-
-  return (
-    <footer id="contact" className="bg-card border-t border-border">
+  const socialLinks = [{
+    icon: Facebook,
+    href: "#facebook",
+    label: "Facebook"
+  }, {
+    icon: Twitter,
+    href: "#twitter",
+    label: "Twitter"
+  }, {
+    icon: Linkedin,
+    href: "#linkedin",
+    label: "LinkedIn"
+  }, {
+    icon: Instagram,
+    href: "#instagram",
+    label: "Instagram"
+  }];
+  return <footer id="contact" className="bg-card border-t border-border">
       {/* Main Footer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid lg:grid-cols-5 gap-8">
           {/* Company Info */}
           <div className="lg:col-span-2">
-            <div className="bg-gradient-hero bg-clip-text text-transparent font-bold text-2xl mb-4">
+            <div className="bg-gradient-hero bg-clip-text text-transparent font-bold text-2xl mb-4 bg-slate-950">
               SmartClassAI
             </div>
             <p className="text-muted-foreground mb-6 leading-relaxed">
@@ -68,23 +103,16 @@ const Footer = () => {
           </div>
 
           {/* Footer Links */}
-          {Object.entries(footerLinks).map(([category, links]) => (
-            <div key={category}>
+          {Object.entries(footerLinks).map(([category, links]) => <div key={category}>
               <h3 className="font-semibold text-foreground mb-4">{category}</h3>
               <ul className="space-y-3">
-                {links.map((link) => (
-                  <li key={link.label}>
-                    <a
-                      href={link.href}
-                      className="text-sm text-muted-foreground hover:text-primary transition-smooth"
-                    >
+                {links.map(link => <li key={link.label}>
+                    <a href={link.href} className="text-sm text-muted-foreground hover:text-primary transition-smooth">
                       {link.label}
                     </a>
-                  </li>
-                ))}
+                  </li>)}
               </ul>
-            </div>
-          ))}
+            </div>)}
         </div>
       </div>
 
@@ -99,22 +127,13 @@ const Footer = () => {
 
             {/* Social Links */}
             <div className="flex items-center space-x-4">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  className="p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-muted transition-smooth"
-                  aria-label={social.label}
-                >
+              {socialLinks.map(social => <a key={social.label} href={social.href} className="p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-muted transition-smooth" aria-label={social.label}>
                   <social.icon className="h-5 w-5" />
-                </a>
-              ))}
+                </a>)}
             </div>
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;

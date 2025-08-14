@@ -34,7 +34,7 @@ const DashboardHighlights = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            Powerful <span className="bg-gradient-hero bg-clip-text text-transparent">Dashboards</span> for Everyone
+            Powerful <span className="bg-gradient-hero bg-clip-text text-slate-950">Dashboards</span> for Everyone
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             Role-based dashboards designed for students, parents, teachers, and administrators with AI-powered insights.

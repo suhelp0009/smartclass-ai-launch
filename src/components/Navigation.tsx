@@ -65,9 +65,7 @@ const Navigation = () => {
                 <Button variant="ghost" size="sm" onClick={() => navigate('/auth')}>
                   Login
                 </Button>
-                <Button variant="hero" size="sm" onClick={() => navigate('/auth')}>
-                  Start Free Trial
-                </Button>
+                <Button variant="hero" size="sm" onClick={() => navigate('/auth')}>Help desk</Button>
               </>}
           </div>
 

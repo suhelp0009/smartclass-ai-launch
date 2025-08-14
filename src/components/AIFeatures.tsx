@@ -4,45 +4,37 @@ import aiFeatures from "@/assets/ai-features.jpg";
 import communicationHub from "@/assets/communication-hub.jpg";
 import aiStudyHelper from "@/assets/ai-study-helper.jpg";
 import mobileSync from "@/assets/mobile-sync.jpg";
-
 const AIFeatures = () => {
-  const features = [
-    {
-      icon: Bot,
-      title: "AI-Powered Automation",
-      description: "Smart attendance tracking with facial recognition, automated grading with intelligent analysis, and real-time performance insights.",
-      image: aiFeatures,
-      gradient: "from-primary to-primary-glow",
-      delay: "0s"
-    },
-    {
-      icon: MessageCircle,
-      title: "Seamless Communication Hub",
-      description: "Instant WhatsApp notifications, SMS alerts, and email communication. Keep parents, teachers, and students connected 24/7.",
-      image: communicationHub,
-      gradient: "from-accent to-accent-glow",
-      delay: "0.2s"
-    },
-    {
-      icon: BookOpen,
-      title: "AI Study Assistant",
-      description: "Personalized learning support with AI-powered homework help, smart study recommendations, and academic progress tracking.",
-      image: aiStudyHelper,
-      gradient: "from-purple-500 to-pink-500",
-      delay: "0.4s"
-    },
-    {
-      icon: Smartphone,
-      title: "Mobile-First Design",
-      description: "Fully synchronized web and mobile applications. Access your dashboards anywhere, anytime with real-time data sync.",
-      image: mobileSync,
-      gradient: "from-emerald-500 to-cyan-500",
-      delay: "0.6s"
-    }
-  ];
-
-  return (
-    <section className="py-24 bg-gradient-primary-soft">
+  const features = [{
+    icon: Bot,
+    title: "AI-Powered Automation",
+    description: "Smart attendance tracking with facial recognition, automated grading with intelligent analysis, and real-time performance insights.",
+    image: aiFeatures,
+    gradient: "from-primary to-primary-glow",
+    delay: "0s"
+  }, {
+    icon: MessageCircle,
+    title: "Seamless Communication Hub",
+    description: "Instant WhatsApp notifications, SMS alerts, and email communication. Keep parents, teachers, and students connected 24/7.",
+    image: communicationHub,
+    gradient: "from-accent to-accent-glow",
+    delay: "0.2s"
+  }, {
+    icon: BookOpen,
+    title: "AI Study Assistant",
+    description: "Personalized learning support with AI-powered homework help, smart study recommendations, and academic progress tracking.",
+    image: aiStudyHelper,
+    gradient: "from-purple-500 to-pink-500",
+    delay: "0.4s"
+  }, {
+    icon: Smartphone,
+    title: "Mobile-First Design",
+    description: "Fully synchronized web and mobile applications. Access your dashboards anywhere, anytime with real-time data sync.",
+    image: mobileSync,
+    gradient: "from-emerald-500 to-cyan-500",
+    delay: "0.6s"
+  }];
+  return <section className="py-24 bg-gradient-primary-soft">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-20">
@@ -52,9 +44,7 @@ const AIFeatures = () => {
           </div>
           <h2 className="text-4xl sm:text-5xl font-bold mb-6">
             Transform Education with{" "}
-            <span className="bg-gradient-hero bg-clip-text text-transparent">
-              Smart Technology
-            </span>
+            <span className="bg-gradient-hero bg-clip-text text-slate-950">TSmart echnology</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Experience the future of school management with our AI-driven platform that automates routine tasks, 
@@ -64,23 +54,16 @@ const AIFeatures = () => {
 
         {/* Features Grid */}
         <div className="grid lg:grid-cols-2 gap-12 mb-16">
-          {features.map((feature, index) => (
-            <div
-              key={feature.title}
-              className="group relative bg-card rounded-3xl p-8 shadow-soft hover:shadow-large transition-smooth animate-slide-in-up"
-              style={{ animationDelay: feature.delay }}
-            >
+          {features.map((feature, index) => <div key={feature.title} className="group relative bg-card rounded-3xl p-8 shadow-soft hover:shadow-large transition-smooth animate-slide-in-up" style={{
+          animationDelay: feature.delay
+        }}>
               {/* Background gradient on hover */}
               <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-5 rounded-3xl transition-smooth`} />
               
               <div className="relative">
                 {/* Feature Image */}
                 <div className="mb-8 overflow-hidden rounded-2xl shadow-medium">
-                  <img
-                    src={feature.image}
-                    alt={feature.title}
-                    className="w-full h-64 object-cover transform group-hover:scale-105 transition-smooth"
-                  />
+                  <img src={feature.image} alt={feature.title} className="w-full h-64 object-cover transform group-hover:scale-105 transition-smooth" />
                 </div>
 
                 {/* Content */}
@@ -101,8 +84,7 @@ const AIFeatures = () => {
 
               {/* Hover effect border */}
               <div className="absolute inset-0 rounded-3xl ring-2 ring-transparent group-hover:ring-primary/20 transition-smooth" />
-            </div>
-          ))}
+            </div>)}
         </div>
 
         {/* Bottom CTA */}
@@ -121,8 +103,6 @@ const AIFeatures = () => {
           </p>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default AIFeatures;
