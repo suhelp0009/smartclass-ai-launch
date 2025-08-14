@@ -157,7 +157,7 @@ const SchoolSearch = () => {
               </div>
               
               <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-                <Building className="h-8 w-8 text-accent-glow mb-2" />
+                <Users className="h-8 w-8 text-accent-glow mb-2" />
                 <h3 className="font-semibold text-sm">Education Management & Analytics</h3>
                 <p className="text-xs opacity-70 mt-1">
                   Top 10 in Australia and New Zealand
