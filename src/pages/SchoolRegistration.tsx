@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
+import { ArrowLeft } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 
@@ -102,16 +103,26 @@ const SchoolRegistration = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-muted/20 flex items-center justify-center p-4">
-      <Card className="w-full max-w-2xl shadow-large bg-card/95 backdrop-blur-sm">
-        <CardHeader className="text-center space-y-4">
-          <div className="text-sm text-muted-foreground">
-            Have an account? <button onClick={() => navigate('/school-search')} className="text-primary hover:underline">Sign In</button>
-          </div>
-          <CardTitle className="text-3xl font-bold">Create Your Account</CardTitle>
-          <p className="text-primary text-lg">
-            It's free for 14 days. No credit card required.
-          </p>
-        </CardHeader>
+      <div className="w-full max-w-2xl">
+        <Button 
+          variant="ghost" 
+          onClick={() => navigate('/')}
+          className="mb-6 text-muted-foreground hover:text-foreground"
+        >
+          <ArrowLeft className="w-4 h-4 mr-2" />
+          Back to Home
+        </Button>
+        
+        <Card className="shadow-large bg-card/95 backdrop-blur-sm">
+          <CardHeader className="text-center space-y-4">
+            <div className="text-sm text-muted-foreground">
+              Have an account? <button onClick={() => navigate('/school-search')} className="text-primary hover:underline">Sign In</button>
+            </div>
+            <CardTitle className="text-3xl font-bold">Create Your Account</CardTitle>
+            <p className="text-primary text-lg">
+              It's free for 14 days. No credit card required.
+            </p>
+          </CardHeader>
         
         <CardContent>
           <form onSubmit={handleRegister} className="space-y-6">
@@ -252,7 +263,8 @@ const SchoolRegistration = () => {
             </Button>
           </form>
         </CardContent>
-      </Card>
+        </Card>
+      </div>
     </div>
   );
 };
