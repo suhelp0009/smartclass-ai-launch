@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -7,9 +7,11 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useAuth } from '@/hooks/useAuth';
 import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
 
 const Auth = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [selectedSchool, setSelectedSchool] = useState<any>(null);
   const [loginData, setLoginData] = useState({ email: '', password: '' });
   const [signupData, setSignupData] = useState({ 
     email: '', 
@@ -21,12 +23,41 @@ const Auth = () => {
   const { signIn, signUp, user } = useAuth();
   const { toast } = useToast();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+
+  useEffect(() => {
+    const schoolSubdomain = searchParams.get('school');
+    if (schoolSubdomain) {
+      fetchSchoolBySubdomain(schoolSubdomain);
+    }
+  }, [searchParams]);
 
   useEffect(() => {
     if (user) {
       navigate('/');
     }
   }, [user, navigate]);
+
+  const fetchSchoolBySubdomain = async (subdomain: string) => {
+    try {
+      const { data, error } = await supabase
+        .from('schools')
+        .select('*')
+        .eq('subdomain', subdomain)
+        .single();
+
+      if (error) throw error;
+      setSelectedSchool(data);
+    } catch (error) {
+      console.error('Error fetching school:', error);
+      toast({
+        title: "School not found",
+        description: "The selected school could not be found. Please try again.",
+        variant: "destructive",
+      });
+      navigate('/school-search');
+    }
+  };
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -79,10 +110,20 @@ const Auth = () => {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/10 via-background to-accent/10 p-4">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl font-bold">SmartClass AI</CardTitle>
+          <CardTitle className="text-2xl font-bold">
+            {selectedSchool ? selectedSchool.name : 'SmartClass AI'}
+          </CardTitle>
           <CardDescription>
-            Sign in to your school management portal
+            {selectedSchool 
+              ? `Sign in to ${selectedSchool.name}'s portal`
+              : 'Sign in to your school management portal'
+            }
           </CardDescription>
+          {selectedSchool && (
+            <div className="text-xs text-muted-foreground mt-2">
+              {selectedSchool.subdomain}.smartclassai.com
+            </div>
+          )}
         </CardHeader>
         
         <CardContent>

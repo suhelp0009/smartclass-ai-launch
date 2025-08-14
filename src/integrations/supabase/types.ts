@@ -176,6 +176,7 @@ export type Database = {
           id: string
           organization_name: string | null
           role: string | null
+          school_id: string | null
           student_id: number | null
           sub_domain: string | null
           updated_at: string
@@ -190,6 +191,7 @@ export type Database = {
           id?: string
           organization_name?: string | null
           role?: string | null
+          school_id?: string | null
           student_id?: number | null
           sub_domain?: string | null
           updated_at?: string
@@ -204,6 +206,7 @@ export type Database = {
           id?: string
           organization_name?: string | null
           role?: string | null
+          school_id?: string | null
           student_id?: number | null
           sub_domain?: string | null
           updated_at?: string
@@ -211,6 +214,13 @@ export type Database = {
           username?: string | null
         }
         Relationships: [
+          {
+            foreignKeyName: "profiles_school_id_fkey"
+            columns: ["school_id"]
+            isOneToOne: false
+            referencedRelation: "schools"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "profiles_student_id_fkey"
             columns: ["student_id"]
@@ -263,6 +273,45 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      schools: {
+        Row: {
+          address: string | null
+          admin_email: string
+          contact_number: string | null
+          created_at: string
+          id: string
+          is_active: boolean
+          logo_url: string | null
+          name: string
+          subdomain: string
+          updated_at: string
+        }
+        Insert: {
+          address?: string | null
+          admin_email: string
+          contact_number?: string | null
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          logo_url?: string | null
+          name: string
+          subdomain: string
+          updated_at?: string
+        }
+        Update: {
+          address?: string | null
+          admin_email?: string
+          contact_number?: string | null
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          logo_url?: string | null
+          name?: string
+          subdomain?: string
+          updated_at?: string
+        }
+        Relationships: []
       }
       students: {
         Row: {

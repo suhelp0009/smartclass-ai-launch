@@ -62,10 +62,10 @@ const Navigation = () => {
                   Sign Out
                 </Button>
               </> : <>
-                <Button variant="ghost" size="sm" onClick={() => navigate('/auth')}>
+                <Button variant="ghost" size="sm" onClick={() => navigate('/school-search')}>
                   Login
                 </Button>
-                <Button variant="hero" size="sm" onClick={() => navigate('/auth')}>Help desk</Button>
+                <Button variant="hero" size="sm" onClick={() => navigate('/school-search')}>Start Free Trial</Button>
               </>}
           </div>
 
@@ -100,13 +100,13 @@ const Navigation = () => {
                     </Button>
                   </> : <>
                     <Button variant="ghost" size="sm" className="w-full" onClick={() => {
-                navigate('/auth');
+                navigate('/school-search');
                 setIsMobileMenuOpen(false);
               }}>
                       Login
                     </Button>
                     <Button variant="hero" size="sm" className="w-full" onClick={() => {
-                navigate('/auth');
+                navigate('/school-search');
                 setIsMobileMenuOpen(false);
               }}>
                       Start Free Trial
