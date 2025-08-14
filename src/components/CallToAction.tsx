@@ -39,9 +39,12 @@ const CallToAction = () => {
               variant="hero-outline"
               size="xl"
               className="group bg-white text-primary hover:bg-white/90 hover:text-primary border-white"
+              asChild
             >
-              Start Free Trial
-              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-smooth" />
+              <a href="/register">
+                Start Free Trial
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-smooth" />
+              </a>
             </Button>
             <Button
               variant="ghost"
