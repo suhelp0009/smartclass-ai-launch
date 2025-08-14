@@ -261,7 +261,7 @@ const SchoolSearch = () => {
                   </p>
                   <Button
                     variant="outline"
-                    onClick={() => setShowRegisterForm(true)}
+                    onClick={() => navigate('/school-registration')}
                     className="w-full h-11 border-2 border-primary/20 hover:border-primary hover:bg-primary/5 transition-smooth"
                   >
                     <Plus className="mr-2 h-4 w-4" />
