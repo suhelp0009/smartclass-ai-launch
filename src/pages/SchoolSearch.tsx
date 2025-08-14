@@ -6,7 +6,7 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { Check, ChevronsUpDown, Search, Plus, Award, Users, Building, Globe } from 'lucide-react';
+import { Check, ChevronsUpDown, Search, Plus, Award, Users, Globe, BookOpen } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
@@ -191,75 +191,90 @@ const SchoolSearch = () => {
               
               <CardContent className="space-y-6">
                 {!showRegisterForm ? (
-                  <>
-                    <div className="space-y-2">
-                      <Label>Search Your School Portal</Label>
-                      <Popover open={open} onOpenChange={setOpen}>
-                        <PopoverTrigger asChild>
-                          <Button
-                            variant="outline"
-                            role="combobox"
-                            aria-expanded={open}
-                            className="w-full justify-between h-12 bg-background/50 border-border/50 hover:bg-background/80 transition-smooth"
-                          >
-                            {selectedSchool
-                              ? selectedSchool.name
-                              : "Search schools..."}
-                            <Search className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-                          </Button>
-                        </PopoverTrigger>
-                        <PopoverContent className="w-full p-0 bg-popover/95 backdrop-blur-sm border-border/50" align="start">
-                          <Command>
-                            <CommandInput placeholder="Search schools..." className="h-12" />
-                            <CommandList>
-                              <CommandEmpty>No schools found.</CommandEmpty>
-                              <CommandGroup>
-                                {schools.map((school) => (
-                                  <CommandItem
-                                    key={school.id}
-                                    value={school.name}
-                                    onSelect={() => handleSchoolSelect(school)}
-                                    className="cursor-pointer transition-smooth hover:bg-accent/10"
-                                  >
-                                    <Check
-                                      className={cn(
-                                        "mr-2 h-4 w-4",
-                                        selectedSchool?.id === school.id ? "opacity-100" : "opacity-0"
-                                      )}
-                                    />
-                                    <div className="flex-1">
-                                      <div className="font-medium">{school.name}</div>
-                                      <div className="text-sm text-muted-foreground">
-                                        {school.subdomain}.smartclassai.com
-                                      </div>
-                                    </div>
-                                  </CommandItem>
-                                ))}
-                              </CommandGroup>
-                            </CommandList>
-                          </Command>
-                        </PopoverContent>
-                      </Popover>
-                    </div>
-
-                    <div className="text-center">
-                      <p className="text-sm text-muted-foreground mb-3">
-                        Don't see your school listed?
-                      </p>
+              <div className="space-y-6">
+                {/* Search Input */}
+                <div className="space-y-3">
+                  <Label htmlFor="school-search" className="text-base font-medium">
+                    Select Your School
+                  </Label>
+                  <Popover open={open} onOpenChange={setOpen}>
+                    <PopoverTrigger asChild>
                       <Button
+                        id="school-search"
                         variant="outline"
-                        onClick={() => setShowRegisterForm(true)}
-                        className="w-full transition-smooth hover:bg-primary/10 hover:border-primary/30"
+                        role="combobox"
+                        aria-expanded={open}
+                        className="w-full h-12 justify-between text-left font-normal bg-card hover:bg-accent/50 transition-smooth"
                       >
-                        <Plus className="mr-2 h-4 w-4" />
-                        Register New School
+                        <div className="flex items-center gap-3">
+                          <Search className="h-4 w-4 text-muted-foreground" />
+                          <span className={selectedSchool ? "text-foreground" : "text-muted-foreground"}>
+                            {selectedSchool ? selectedSchool.name : "Search Your School Portal"}
+                          </span>
+                        </div>
+                        <ChevronsUpDown className="h-4 w-4 shrink-0 text-muted-foreground" />
                       </Button>
-                    </div>
-                  </>
-                ) : (
-                  <form onSubmit={handleRegisterSchool} className="space-y-4">
+                    </PopoverTrigger>
+                    <PopoverContent className="w-full p-0 bg-popover border shadow-large" align="start">
+                      <Command className="bg-transparent">
+                        <CommandInput 
+                          placeholder="Type school name..." 
+                          className="border-0 focus:ring-0"
+                        />
+                        <CommandList className="max-h-60">
+                          <CommandEmpty className="py-6 text-center text-muted-foreground">
+                            No schools found.
+                          </CommandEmpty>
+                          <CommandGroup>
+                            {schools.map((school) => (
+                              <CommandItem
+                                key={school.id}
+                                value={school.name}
+                                onSelect={() => handleSchoolSelect(school)}
+                                className="py-3 cursor-pointer hover:bg-accent/50 transition-smooth"
+                              >
+                                <Check
+                                  className={cn(
+                                    "mr-3 h-4 w-4 text-accent",
+                                    selectedSchool?.id === school.id ? "opacity-100" : "opacity-0"
+                                  )}
+                                />
+                                <div className="flex-1">
+                                  <div className="font-medium text-foreground">{school.name}</div>
+                                  <div className="text-sm text-muted-foreground">
+                                    {school.subdomain}.smartclassai.com
+                                  </div>
+                                </div>
+                              </CommandItem>
+                            ))}
+                          </CommandGroup>
+                        </CommandList>
+                      </Command>
+                    </PopoverContent>
+                  </Popover>
+                </div>
+
+                {/* Register New School */}
+                <div className="text-center pt-4">
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Don't see your school listed?
+                  </p>
+                  <Button
+                    variant="outline"
+                    onClick={() => setShowRegisterForm(true)}
+                    className="w-full h-11 border-2 border-primary/20 hover:border-primary hover:bg-primary/5 transition-smooth"
+                  >
+                    <Plus className="mr-2 h-4 w-4" />
+                    Register New School
+                  </Button>
+                </div>
+              </div>
+            ) : (
+              <Card className="border-0 shadow-none bg-transparent">
+                <CardContent className="p-0">
+                  <form onSubmit={handleRegisterSchool} className="space-y-5">
                     <div className="space-y-2">
-                      <Label htmlFor="school-name">School Name</Label>
+                      <Label htmlFor="school-name" className="text-base font-medium">School Name</Label>
                       <Input
                         id="school-name"
                         type="text"
@@ -267,13 +282,13 @@ const SchoolSearch = () => {
                         value={newSchool.name}
                         onChange={(e) => setNewSchool(prev => ({ ...prev, name: e.target.value }))}
                         required
-                        className="h-12 bg-background/50 border-border/50 transition-smooth focus:bg-background"
+                        className="h-11 bg-card border-border/50 focus:border-primary transition-smooth"
                       />
                     </div>
                     
                     <div className="space-y-2">
-                      <Label htmlFor="subdomain">Subdomain</Label>
-                      <div className="flex items-center">
+                      <Label htmlFor="subdomain" className="text-base font-medium">Subdomain</Label>
+                      <div className="flex items-center border border-border/50 rounded-lg overflow-hidden focus-within:border-primary transition-smooth">
                         <Input
                           id="subdomain"
                           type="text"
@@ -281,56 +296,58 @@ const SchoolSearch = () => {
                           value={newSchool.subdomain}
                           onChange={(e) => setNewSchool(prev => ({ ...prev, subdomain: e.target.value.toLowerCase().replace(/[^a-z0-9]/g, '') }))}
                           required
-                          className="rounded-r-none h-12 bg-background/50 border-border/50 transition-smooth focus:bg-background"
+                          className="border-0 rounded-none h-11 bg-transparent focus:ring-0"
                         />
-                        <div className="px-3 py-3 bg-muted/50 border border-l-0 rounded-r-md text-sm text-muted-foreground">
+                        <div className="px-4 py-3 bg-muted/50 text-sm text-muted-foreground border-l border-border/50">
                           .smartclassai.com
                         </div>
                       </div>
                     </div>
                     
                     <div className="space-y-2">
-                      <Label htmlFor="contact">Contact Number (Optional)</Label>
+                      <Label htmlFor="contact" className="text-base font-medium">Contact Number (Optional)</Label>
                       <Input
                         id="contact"
                         type="tel"
                         placeholder="+1 (555) 123-4567"
                         value={newSchool.contact_number}
                         onChange={(e) => setNewSchool(prev => ({ ...prev, contact_number: e.target.value }))}
-                        className="h-12 bg-background/50 border-border/50 transition-smooth focus:bg-background"
+                        className="h-11 bg-card border-border/50 focus:border-primary transition-smooth"
                       />
                     </div>
                     
                     <div className="space-y-2">
-                      <Label htmlFor="address">Address (Optional)</Label>
+                      <Label htmlFor="address" className="text-base font-medium">Address (Optional)</Label>
                       <Input
                         id="address"
                         type="text"
                         placeholder="123 Main St, City, State 12345"
                         value={newSchool.address}
                         onChange={(e) => setNewSchool(prev => ({ ...prev, address: e.target.value }))}
-                        className="h-12 bg-background/50 border-border/50 transition-smooth focus:bg-background"
+                        className="h-11 bg-card border-border/50 focus:border-primary transition-smooth"
                       />
                     </div>
 
-                    <div className="flex gap-2">
+                    <div className="flex gap-3 pt-4">
                       <Button
                         type="button"
                         variant="outline"
                         onClick={() => setShowRegisterForm(false)}
-                        className="flex-1 h-12 transition-smooth"
+                        className="flex-1 h-11"
                       >
                         Back
                       </Button>
                       <Button 
                         type="submit" 
                         disabled={isLoading} 
-                        className="flex-1 h-12 bg-primary hover:bg-primary/90 transition-smooth"
+                        className="flex-1 h-11 bg-primary hover:bg-primary/90 transition-smooth"
                       >
                         {isLoading ? "Registering..." : "Register School"}
                       </Button>
                     </div>
                   </form>
+                </CardContent>
+              </Card>
                 )}
               </CardContent>
             </Card>
